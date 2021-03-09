@@ -1,20 +1,42 @@
 {
   "name": "vite-electron-react-tpl",
   "version": "0.0.0",
+  "author": "app",
+  "appName": "Vite Demo",
+  "appId": "hefx.vite_electron_vue_tpl.com",
+  "description": "demo",
+  "main": "main/index.cjs.js",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc && vite build",
-    "serve": "vite preview"
+    "buildEnvTypes": "node ./bin/buildEnvTypes.js",
+    "prebuild": "yarn run buildEnvTypes",
+    "precompile": "cross-env MODE=production yarn run build",
+    "compile:win": "yarn run build && electron-builder build --config electron-builder.js --win",
+    "compile:mac": "electron-builder build --config electron-builder.js --mac",
+    "build": "node ./bin/build.js",
+    "watch": "node ./bin/watch.js"
   },
   "dependencies": {
+    "antd": "^4.13.1",
+    "dayjs": "^1.10.4",
     "react": "^17.0.0",
     "react-dom": "^17.0.0"
   },
   "devDependencies": {
+    "slash": "^3.0.0",
+    "child_process": "^1.0.2",
+    "chokidar": "^3.5.1",
+    "cross-env": "^7.0.3",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
     "@vitejs/plugin-react-refresh": "^1.3.1",
-    "typescript": "^4.1.2",
-    "vite": "^2.0.5"
+    "dotenv": "^8.2.0",
+    "electron": "^12.0.0",
+    "electron-builder": "^22.10.5",
+    "electron-store": "^7.0.2",
+    "electron-devtools-installer": "^3.1.1",
+    "less": "^4.1.1",
+    "typescript": "^4.1.3",
+    "vite": "^2.0.5",
+    "vite-plugin-style-import": "^0.8.1"
   }
 }
