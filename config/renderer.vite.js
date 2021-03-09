@@ -4,6 +4,9 @@ import styleImport from "vite-plugin-style-import";
 const { join, resolve } = require("path");
 const reactRefresh = require("@vitejs/plugin-react-refresh");
 const { chrome } = require("./electron-vendors");
+
+require("dotenv").config();
+
 /**
  * @type {import('vite').UserConfig}
  * @see https://vitejs.dev/config/
@@ -14,6 +17,9 @@ module.exports = {
     alias: {
       "@/": resolve(__dirname, "../src/renderer") + "/",
     },
+  },
+  server: {
+    port: process.env.PORT,
   },
   // plugins: [vue()],
   base: "./",

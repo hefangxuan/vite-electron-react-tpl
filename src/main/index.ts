@@ -1,28 +1,29 @@
-import {app, BrowserWindow, ipcMain} from 'electron';
-import {join} from 'path';
-import {URL} from 'url';
-import {globalConfig} from '../common/store';
+import { app, BrowserWindow, ipcMain } from "electron";
+import { join } from "path";
+import { URL } from "url";
+import { globalConfig } from "../common/store";
 
+const isDev = require("electron-is-dev");
+
+require("dotenv").config({ path: join(process.cwd(), ".env") });
 
 const gotTheLock = app.requestSingleInstanceLock();
 
 if (!gotTheLock) {
   app.quit();
 } else {
-
-
   /**
    * Workaround for TypeScript bug
    * @see https://github.com/microsoft/TypeScript/issues/41468#issuecomment-727543400
    */
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   const env = import.meta.env;
 
-  globalConfig.set('a', 1);
+  globalConfig.set("a", 1);
 
-  console.log(33333312223232222, globalConfig.get('a'));
-  ipcMain.handle('globalConfig',   (event, key) => {
+  console.log(22, globalConfig.get("a"));
+  ipcMain.handle("globalConfig", (event, key) => {
     return globalConfig.get(key);
   });
 
@@ -47,8 +48,8 @@ if (!gotTheLock) {
       show: false,
       webPreferences: {
         nodeIntegration: true,
-        preload: join(__dirname, '../preload/index.cjs.js'),
-        contextIsolation: true,   // Spectron tests can't work with contextIsolation: true
+        preload: join(__dirname, "../preload/index.cjs.js"),
+        contextIsolation: true, // Spectron tests can't work with contextIsolation: true
         enableRemoteModule: true, // Spectron tests can't work with enableRemoteModule: false
       },
     });
@@ -58,21 +59,21 @@ if (!gotTheLock) {
      * Vite dev server for development.
      * `file://../renderer/index.html` for production and test
      */
-    const pageUrl = env.MODE === 'development'
-      ? env.VITE_DEV_SERVER_URL
-      : new URL('renderer/index.html', 'file://' + __dirname).toString();
+    const pageUrl =
+      env.MODE === "development"
+        ? env.VITE_DEV_SERVER_URL
+        : new URL("renderer/index.html", "file://" + __dirname).toString();
 
     await mainWindow.loadURL(pageUrl);
     mainWindow.maximize();
     mainWindow.show();
 
-    if (env.MODE === 'development') {
+    if (isDev) {
       mainWindow.webContents.openDevTools();
     }
   }
 
-
-  app.on('second-instance', () => {
+  app.on("second-instance", () => {
     // Someone tried to run a second instance, we should focus our window.
     if (mainWindow) {
       if (mainWindow.isMinimized()) mainWindow.restore();
@@ -80,18 +81,16 @@ if (!gotTheLock) {
     }
   });
 
-
-  app.on('window-all-closed', () => {
-    if (process.platform !== 'darwin') {
+  app.on("window-all-closed", () => {
+    if (process.platform !== "darwin") {
       app.quit();
     }
   });
 
-
-  app.whenReady()
+  app
+    .whenReady()
     .then(createWindow)
-    .catch((e) => console.error('Failed create window:', e));
-
+    .catch((e) => console.error("Failed create window:", e));
 
   // Auto-updates
   // if (env.PROD) {
