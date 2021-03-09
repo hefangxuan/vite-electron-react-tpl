@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import useElectron from "../hooks/useElectron";
 import { PageHeader } from "hefx-cmp";
 
-function Index() {
+function Home() {
   const [count, setCount] = useState(0);
 
   const { globalConfig } = useElectron();
@@ -10,10 +10,10 @@ function Index() {
   console.log("获取本地存储:", globalConfig.get("a"));
 
   return (
-    <div className="w-100 d-flex flex-column flex-between">
+    <div className="vh-100 w-100 d-flex flex-column flex-between">
       <PageHeader title="Vite Demo">
         <div className="flex-1 d-flex flex-row flex-between">
-          <div className="flex-1 border-right-d">left</div>
+          <div className="flex-1 border-right-d">我是home left</div>
           <div className="flex-1">right</div>
         </div>
       </PageHeader>
@@ -21,4 +21,4 @@ function Index() {
   );
 }
 
-export default Index;
+export default Home;

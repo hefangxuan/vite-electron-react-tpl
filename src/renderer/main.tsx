@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { ConfigProvider } from "antd";
 import zhCN from "antd/lib/locale/zh_CN";
-import App from "@renderer/layouts";
+import App from "@renderer/router";
 
 import "./styles/global.less";
 

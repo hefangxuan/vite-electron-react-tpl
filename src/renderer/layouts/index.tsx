@@ -1,39 +1,21 @@
 import React from "react";
-import { HashRouter as Router, Link, Route, Switch } from "react-router-dom";
-import Index from "@renderer/pages";
+import { routers } from "@renderer/config/router";
+import { Link } from "react-router-dom";
 
-const Layout = React.memo(() => {
+const Layout = React.memo((props) => {
   return (
-    <Router>
-      <div>
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/about">About</Link>
-          </li>
-          <li>
-            <Link to="/dashboard">Dashboard</Link>
-          </li>
-        </ul>
-
-        <hr />
-
-        {/*
-          A <Switch> looks through all its children <Route>
-          elements and renders the first one whose path
-          matches the current URL. Use a <Switch> any time
-          you have multiple routes, but you want only one
-          of them to render at a time
-        */}
-        <Switch>
-          <Route exact path="/">
-            <Index />
-          </Route>
-        </Switch>
+    <div>
+      <div style={{ width: "100%", height: 40 }}>
+        {routers.map((route) => {
+          return (
+            <Link key={route.path} to={route.path}>
+              {route.name}
+            </Link>
+          );
+        })}
       </div>
-    </Router>
+      {props.children}
+    </div>
   );
 });
 
