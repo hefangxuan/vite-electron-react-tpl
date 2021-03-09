@@ -3,10 +3,6 @@ import { join } from "path";
 import { URL } from "url";
 import { globalConfig } from "../common/store";
 
-const isDev = require("electron-is-dev");
-
-require("dotenv").config({ path: join(process.cwd(), ".env") });
-
 const gotTheLock = app.requestSingleInstanceLock();
 
 if (!gotTheLock) {
@@ -39,8 +35,6 @@ if (!gotTheLock) {
   //     .catch(e => console.error('Failed install extension:', e));
   // }
 
-  console.log(2232213);
-
   let mainWindow: BrowserWindow | null = null;
 
   async function createWindow() {
@@ -59,7 +53,7 @@ if (!gotTheLock) {
      * Vite dev server for development.
      * `file://../renderer/index.html` for production and test
      */
-    const pageUrl =
+    const pageUrl: any =
       env.MODE === "development"
         ? env.VITE_DEV_SERVER_URL
         : new URL("renderer/index.html", "file://" + __dirname).toString();
@@ -68,7 +62,7 @@ if (!gotTheLock) {
     mainWindow.maximize();
     mainWindow.show();
 
-    if (isDev) {
+    if (env.MODE === "development") {
       mainWindow.webContents.openDevTools();
     }
   }

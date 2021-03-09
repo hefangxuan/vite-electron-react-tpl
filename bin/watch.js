@@ -59,8 +59,9 @@ function debounce(f, ms) {
       [join(process.cwd(), "dist/source/main/index.cjs.js")],
       {
         env: {
-          ELECTRON_DISABLE_SECURITY_WARNINGS:
-            process.env.ELECTRON_DISABLE_SECURITY_WARNINGS,
+          ELECTRON_DISABLE_SECURITY_WARNINGS: Boolean(
+            process.env.VIIT_ELECTRON_DISABLE_SECURITY_WARNINGS
+          ),
         },
       }
     );
