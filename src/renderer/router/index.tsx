@@ -1,5 +1,5 @@
 import React, { useCallback } from "react";
-import { HashRouter as Router, Link, Route, Switch } from "react-router-dom";
+import { HashRouter as Router, Route, Switch } from "react-router-dom";
 import { routers, RouterType } from "@renderer/config/router";
 import Layout from "@renderer/layouts";
 
