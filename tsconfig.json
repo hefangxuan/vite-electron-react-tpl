@@ -1,6 +1,6 @@
 {
-  "extends": "./config/tsconfig-base.json",
   "compilerOptions": {
+    "experimentalDecorators": true,
     "target": "ESNext",
     "lib": [
       "DOM",
@@ -8,12 +8,13 @@
       "ESNext"
     ],
     "types": [
+      "../types/env",
       "vite/client"
     ],
     "allowJs": false,
     "skipLibCheck": false,
     "forceConsistentCasingInFileNames": true,
-    "module": "CommonJS",
+    "module": "ESNext",
     "moduleResolution": "Node",
     "isolatedModules": true,
     "noEmit": true,
@@ -21,7 +22,6 @@
     "importHelpers": true,
     "esModuleInterop": true,
     "resolveJsonModule": true,
-    "sourceMap": true,
     "strict": true,
     "baseUrl": "./",
     "paths": {
@@ -35,8 +35,12 @@
         "./src/preload/*"
       ]
     },
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "useDefineForClassFields": true
   },
+  "exclude": [
+    "./node_modules"
+  ],
   "include": [
     "./src/renderer"
   ]

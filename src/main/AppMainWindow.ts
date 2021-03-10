@@ -65,9 +65,9 @@ export default class AppMainWindow {
       backgroundColor: "#fff",
       // fullscreen: false,
       webPreferences: {
-        nodeIntegration: true,
+        // nodeIntegration: true,
         preload: join(__dirname, "../preload/index.cjs.js"),
-        contextIsolation: true,
+        // contextIsolation: true,
         enableRemoteModule: true,
       },
       show: false,

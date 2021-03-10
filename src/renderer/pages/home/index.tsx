@@ -1,14 +1,7 @@
-import React, { useState } from "react";
-import useElectron from "@renderer/hooks/useElectron";
+import React from "react";
 import { PageHeader } from "hefx-cmp";
 
 function Home(props: any) {
-  const [count, setCount] = useState(0);
-
-  const { globalConfig } = useElectron();
-
-  console.log("获取本地存储:", globalConfig.get("a"), props);
-
   return (
     <div className="vh-100 w-100 d-flex flex-column flex-between">
       <PageHeader title="Vite Demo">
