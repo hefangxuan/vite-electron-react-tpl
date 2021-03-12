@@ -5,13 +5,12 @@
 // - Need more tests
 // - Refactoring
 
-const slash = require("slash");
 const chokidar = require("chokidar");
 const { createServer, build, normalizePath } = require("vite");
 const electronPath = require("electron");
 const { logProcess, logError } = require("hefx-utils");
 const { spawn } = require("child_process");
-const { join, relative } = require("path");
+const { join } = require("path");
 
 const mode = process.env.MODE || "development";
 
@@ -97,10 +96,9 @@ function debounce(f, ms) {
 
   const buildMainDebounced = debounce(buildMain, TIMEOUT);
 
-  const runPreload = debounce((file) => {
+  const runPreload = debounce(() => {
     viteDevServer.ws.send({
       type: "full-reload",
-      path: "/" + slash(relative(viteDevServer.config.root, file)),
     });
   }, TIMEOUT);
 

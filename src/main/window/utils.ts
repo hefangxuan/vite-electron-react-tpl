@@ -4,7 +4,7 @@ import { isDevEnv, VITE_DEV_SERVER_URL } from "../../common/utils";
 
 export function getLoadURL() {
   return (app.isPackaged
-    ? `file://${join(__dirname, "renderer/index.html")}` // vite 构建后的静态文件地址
+    ? `file://${join(__dirname, "../renderer/index.html")}` // vite 构建后的静态文件地址
     : VITE_DEV_SERVER_URL || ""
   ).toString(); // vite 启动的服务器地址
 }

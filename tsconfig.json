@@ -39,7 +39,8 @@
       ]
     },
     "allowSyntheticDefaultImports": true,
-    "useDefineForClassFields": true
+    "useDefineForClassFields": true,
+    "sourceMap": true
   },
   "exclude": [
     "./node_modules"

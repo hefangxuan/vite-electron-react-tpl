@@ -27,11 +27,11 @@ export class Main extends WinSubscribe {
       title: "草鞋没号",
       ...this.opts,
     });
-    this.win.loadURL(this.url).catch(console.log);
 
     if (isDevEnv) {
       this.win.webContents.openDevTools();
     }
+    this.win.loadURL(this.url).catch(console.log);
   }
 
   public close() {

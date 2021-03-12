@@ -9,7 +9,7 @@
 module.exports.external = [
   "electron",
   // 'electron-updater',
-  // "electron-store",
+  "electron-store",
   // "mobx",
   // "mobx-react",
   "request",

@@ -9,10 +9,10 @@
   "scripts": {
     "buildEnvTypes": "node ./bin/buildEnvTypes.js",
     "prebuild": "yarn run buildEnvTypes",
-    "precompile": "cross-env MODE=production yarn run build",
-    "compile:win": "yarn run build && electron-builder build --config electron-builder.js --win",
+    "compile:win": "yarn run precompile && electron-builder build --config electron-builder.js --win",
     "compile:mac": "electron-builder build --config electron-builder.js --mac",
     "build": "node ./bin/build.js",
+    "precompile": "cross-env MODE=production yarn run build",
     "watch": "node ./bin/watch.js"
   },
   "dependencies": {
@@ -24,7 +24,9 @@
     "mobx-react": "^7.1.0",
     "react": "^17.0.0",
     "react-dom": "^17.0.0",
-    "react-router-dom": "^5.2.0"
+    "react-router-dom": "^5.2.0",
+    "request": "^2.88.2",
+    "request-promise": "^4.2.6"
   },
   "devDependencies": {
     "@types/electron-devtools-installer": "^2.2.0",
@@ -38,14 +40,11 @@
     "chokidar": "^3.5.1",
     "cross-env": "^7.0.3",
     "dotenv": "^8.2.0",
-    "electron": "^12.0.0",
+    "electron": "^12.0.1",
     "electron-builder": "^22.10.5",
     "electron-devtools-installer": "^3.1.1",
     "less": "^4.1.1",
-    "request": "^2.88.2",
-    "request-promise": "^4.2.6",
-    "rollup-plugin-smart-asset": "^2.1.1",
-    "slash": "^3.0.0",
+    "spectron": "^14.0.0",
     "typescript": "^4.1.3",
     "vite": "^2.0.5",
     "vite-plugin-style-import": "^0.8.1"

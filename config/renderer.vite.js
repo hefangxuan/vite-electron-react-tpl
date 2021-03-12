@@ -16,7 +16,7 @@ module.exports = {
       "@renderer": join(process.cwd(), "src/renderer"),
     },
   },
-  base: "./",
+  base: "",
   build: {
     sourcemap: "inline",
     target: `chrome${chrome}`,
