@@ -1,34 +1,35 @@
-const {node} = require('./electron-vendors');
-const {join} = require('path');
+const smartAsset = require("rollup-plugin-smart-asset");
+const { node } = require("./electron-vendors");
+const { join } = require("path");
 
 /**
  * @type {import('vite').UserConfig}
  * @see https://vitejs.dev/config/
  */
 module.exports = () => {
-
   return {
     resolve: {
       alias: {
-        '/@/': join(process.cwd(), './src/main') + '/',
+        "/@/": join(process.cwd(), "./src/main") + "/",
       },
     },
+    publicDir: "src/main/public",
     build: {
       // sourcemap: 'inline',
       target: `node${node}`,
-      outDir: 'dist/source/main',
-      assetsDir: '.',
-      minify: process.env.MODE === 'development' ? false : 'terser',
+      outDir: "dist/source/main",
+      minify: process.env.MODE === "development" ? false : "terser",
       lib: {
-        entry: 'src/main/index.ts',
-        formats: ['cjs'],
+        entry: "src/main/index.ts",
+        formats: ["cjs"],
       },
       rollupOptions: {
-        external: require('./external-packages').default,
+        // plugins: [smartAsset({ include: ["src/main/assets"] })],
+        external: require("./external-packages").default,
         output: {
-          entryFileNames: '[name].[format].js',
-          chunkFileNames: '[name].[format].js',
-          assetFileNames: '[name].[ext]',
+          entryFileNames: "[name].[format].js",
+          chunkFileNames: "[name].[format].js",
+          assetFileNames: "[name].[ext]",
         },
       },
       emptyOutDir: true,

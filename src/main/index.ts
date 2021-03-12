@@ -94,6 +94,7 @@
 //   //     .catch((e) => console.error('Failed check updates:', e));
 //   // }
 // }
+import { isJSON } from "hefx-utils";
 
 import { app, ipcMain } from "electron";
 
@@ -103,6 +104,7 @@ import { globalConfig } from "../common/store";
 import AppMainWindow from "./AppMainWindow";
 import { getIPAdress, isDevEnv, isObjectNum } from "../common/utils";
 import installExtension from "electron-devtools-installer";
+import { getBaidu } from "../renderer/api/test";
 
 // 判断实例数, 超过3个将会退出
 isObjectNum(app, 3);
@@ -165,9 +167,13 @@ class MainApp {
   // 所有的IPC通信都放这边
   initIPC() {
     globalConfig.set("a", 1);
-    console.log(33333312223232222, globalConfig.get("a"));
+    console.log(33333312223232222, isJSON("1122"));
     ipcMain.handle("globalConfig", (event, key) => {
       return globalConfig.get(key);
+    });
+
+    ipcMain.handle("getBaidu", async (event) => {
+      return await getBaidu();
     });
   }
 

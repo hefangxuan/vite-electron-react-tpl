@@ -32,14 +32,13 @@ export default class AppMainWindow {
       webPreferences: {
         nodeIntegration: true,
         enableRemoteModule: true,
+        preload: join(__dirname, "../preload/index.cjs.js"),
       },
     });
 
     if (isDevEnv) {
       this.motionWindow
-        .loadURL(
-          `file://${path.join(process.cwd(), "files/loading/loading.html")}`
-        )
+        .loadURL(`file://${path.join(__dirname, "loading.html")}`)
         .catch((e: any) => console.log("加载文件错误: ", e));
     } else {
       this.motionWindow
@@ -65,9 +64,9 @@ export default class AppMainWindow {
       backgroundColor: "#fff",
       // fullscreen: false,
       webPreferences: {
-        // nodeIntegration: true,
+        nodeIntegration: true,
         preload: join(__dirname, "../preload/index.cjs.js"),
-        // contextIsolation: true,
+        contextIsolation: true,
         enableRemoteModule: true,
       },
       show: false,
@@ -80,7 +79,7 @@ export default class AppMainWindow {
     this.mainWindow.setMenuBarVisibility(false);
 
     // 创建loading窗口
-    // this.createMotionWindow();
+    this.createMotionWindow();
     /**
      * URL for main window.
      * Vite dev server for development.

@@ -1,5 +1,5 @@
-const {chrome} = require('./electron-vendors');
-const {join} = require('path');
+const { chrome } = require("./electron-vendors");
+const { join } = require("path");
 
 /**
  * @type {import('vite').UserConfig}
@@ -8,25 +8,25 @@ const {join} = require('path');
 module.exports = {
   resolve: {
     alias: {
-      '/@/': join(process.cwd(), './src/preload') + '/',
+      "/@/": join(process.cwd(), "./src/preload") + "/",
     },
   },
   build: {
     // sourcemap: 'inline',
     target: `chrome${chrome}`,
-    outDir: 'dist/source/preload',
-    assetsDir: '.',
-    minify: process.env.MODE === 'development' ? false : 'terser',
+    outDir: "dist/source/preload",
+    assetsDir: ".",
+    minify: process.env.MODE === "development" ? false : "terser",
     lib: {
-      entry: 'src/preload/index.ts',
-      formats: ['cjs'],
+      entry: "src/preload/index.ts",
+      formats: ["cjs"],
     },
     rollupOptions: {
-      external: require('./external-packages').default,
+      external: require("./external-packages").default,
       output: {
-        entryFileNames: '[name].[format].js',
-        chunkFileNames: '[name].[format].js',
-        assetFileNames: '[name].[ext]',
+        entryFileNames: "[name].[format].js",
+        chunkFileNames: "[name].[format].js",
+        assetFileNames: "[name].[ext]",
       },
     },
     emptyOutDir: true,

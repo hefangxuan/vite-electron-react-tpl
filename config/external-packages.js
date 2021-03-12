@@ -12,6 +12,8 @@ module.exports.external = [
   // "electron-store",
   // "mobx",
   // "mobx-react",
+  "request",
+  "request-promise",
 ];
 
 module.exports.builtins = [

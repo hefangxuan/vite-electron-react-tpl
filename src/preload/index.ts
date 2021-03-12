@@ -1,14 +1,20 @@
 import { ContextBridge, contextBridge, ipcRenderer } from "electron";
+import { request } from "../common/request";
+
+import { appName, version } from "../../package.json";
 
 const apiKey = "electron";
 /**
  * @see https://github.com/electron/electron/issues/21437#issuecomment-573522360
  */
 const api = {
-  versions: process.versions,
+  appName,
+  version,
   globalConfig: {
     get: (key: string) => ipcRenderer.invoke("globalConfig", key),
   },
+  getBaidu: () => ipcRenderer.invoke("getBaidu").catch(console.log),
+  request: async (url: string, options: any) => await request(url, options),
 } as const;
 
 export type ExposedInMainWorld = Readonly<typeof api>;

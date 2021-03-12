@@ -1,8 +1,6 @@
 import theme from "../src/renderer/styles/theme";
 import styleImport from "vite-plugin-style-import";
 
-import legacy from "@vitejs/plugin-legacy";
-
 const { join } = require("path");
 const reactRefresh = require("@vitejs/plugin-react-refresh");
 const { chrome } = require("./electron-vendors");
@@ -42,10 +40,7 @@ module.exports = {
     },
   },
   plugins: [
-    legacy(),
-    reactRefresh({
-      parserPlugins: ["exportDefaultFrom", "decorators-legacy"],
-    }),
+    reactRefresh(),
     styleImport({
       libs: [
         {
