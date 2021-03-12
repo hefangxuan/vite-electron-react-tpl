@@ -10,12 +10,12 @@ module.exports = () => {
   return {
     resolve: {
       alias: {
-        "/@/": join(process.cwd(), "./src/main") + "/",
+        "@main": join(process.cwd(), "./src/main") + "/",
       },
     },
     publicDir: "src/main/public",
     build: {
-      // sourcemap: 'inline',
+      sourcemap: "inline",
       target: `node${node}`,
       outDir: "dist/source/main",
       minify: process.env.MODE === "development" ? false : "terser",

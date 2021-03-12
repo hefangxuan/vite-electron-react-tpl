@@ -16,10 +16,9 @@ module.exports = {
       "@renderer": join(process.cwd(), "src/renderer"),
     },
   },
-  // plugins: [vue()],
   base: "./",
   build: {
-    // sourcemap: 'inline',
+    sourcemap: "inline",
     target: `chrome${chrome}`,
     polyfillDynamicImport: false,
     outDir: join(process.cwd(), "dist/source/renderer"),
