@@ -9,7 +9,10 @@ module.exports = () => {
   return {
     resolve: {
       alias: {
-        "@main": join(process.cwd(), "./src/main") + "/",
+        "@renderer": join(process.cwd(), "src/renderer"),
+        "@main": join(process.cwd(), "src/main"),
+        "@common": join(process.cwd(), "src/common"),
+        "@preload": join(process.cwd(), "src/preload"),
       },
     },
     publicDir: "src/main/public",

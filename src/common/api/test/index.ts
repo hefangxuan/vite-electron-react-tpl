@@ -18,7 +18,7 @@ import * as electron from "electron";
 //   return await _request(test + url, newOptions);
 // }
 import { isJSON } from "hefx-utils";
-import useElectron from "../../hooks/useElectron";
+import useElectron from "../../../renderer/hooks/useElectron";
 
 export async function getBaidu() {
   const { request } = useElectron();

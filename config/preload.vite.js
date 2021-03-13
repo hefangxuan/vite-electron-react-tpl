@@ -8,7 +8,10 @@ const { join } = require("path");
 module.exports = {
   resolve: {
     alias: {
-      "/@/": join(process.cwd(), "./src/preload") + "/",
+      "@renderer": join(process.cwd(), "src/renderer"),
+      "@main": join(process.cwd(), "src/main"),
+      "@common": join(process.cwd(), "src/common"),
+      "@preload": join(process.cwd(), "src/preload"),
     },
   },
   build: {

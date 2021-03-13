@@ -2,7 +2,7 @@ import React from "react";
 import useElectron from "../hooks/useElectron";
 import { PageHeader } from "hefx-cmp";
 import { Button } from "antd";
-import { getBaidu } from "@renderer/api/test";
+import { getBaidu } from "@common/api/test";
 import { useStore } from "@renderer/stores";
 import { observer } from "mobx-react";
 

@@ -36,6 +36,9 @@
       ],
       "@preload/*": [
         "./src/preload/*"
+      ],
+      "@common/*": [
+        "./src/common/*"
       ]
     },
     "allowSyntheticDefaultImports": true,

@@ -28,6 +28,9 @@ export class Main extends WinSubscribe {
       ...this.opts,
     });
 
+    // 隐藏默认菜单
+    this.win.setMenuBarVisibility(false);
+
     if (isDevEnv) {
       this.win.webContents.openDevTools();
     }
