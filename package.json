@@ -1,6 +1,6 @@
 {
   "name": "vite-electron-react-tpl",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "author": "app",
   "appName": "Vite Demo",
   "appId": "hefx.vite_electron_vue_tpl.com",

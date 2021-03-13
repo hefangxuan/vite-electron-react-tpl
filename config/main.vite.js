@@ -1,4 +1,3 @@
-const smartAsset = require("rollup-plugin-smart-asset");
 const { node } = require("./electron-vendors");
 const { join } = require("path");
 
@@ -24,7 +23,6 @@ module.exports = () => {
         formats: ["cjs"],
       },
       rollupOptions: {
-        // plugins: [smartAsset({ include: ["src/main/assets"] })],
         external: require("./external-packages").default,
         output: {
           entryFileNames: "[name].[format].js",
