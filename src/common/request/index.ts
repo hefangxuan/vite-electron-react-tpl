@@ -1,5 +1,5 @@
 import _request from "request-promise";
-import { isJSON } from "hefx-utils";
+import { isJSON } from "@hefx/utils";
 
 export type RequestProps = {} & _request.RequestPromiseOptions;
 /**

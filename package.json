@@ -16,10 +16,11 @@
     "watch": "node ./bin/watch.js"
   },
   "dependencies": {
+    "@hefx/cmp": "^1.0.2",
+    "@hefx/utils": "^0.1.5",
     "antd": "^4.13.1",
     "dayjs": "^1.10.4",
     "electron-store": "^7.0.2",
-    "hefx-utils": "^0.1.3",
     "mobx": "^6.1.8",
     "mobx-react": "^7.1.0",
     "react": "^17.0.0",

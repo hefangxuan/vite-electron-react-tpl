@@ -1,5 +1,5 @@
 import React from "react";
-import { PageHeader } from "hefx-cmp";
+import { PageHeader } from "@hefx/cmp";
 
 function Home(props: any) {
   return (

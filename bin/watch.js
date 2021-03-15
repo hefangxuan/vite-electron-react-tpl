@@ -8,7 +8,7 @@
 const chokidar = require("chokidar");
 const { createServer, build, normalizePath } = require("vite");
 const electronPath = require("electron");
-const { logProcess, logError } = require("hefx-utils");
+const { logProcess, logError } = require("@hefx/utils");
 const { spawn } = require("child_process");
 const { join } = require("path");
 
